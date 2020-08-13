@@ -1,5 +1,5 @@
 #### File Path #####
-file_path=/home/fuyao/FunSeq_PCAWG/data_context
+file_path=data_context
 
 #### 1000G SNP file ####
 tgp_snp=1kg.phase1.snp.bed.gz
