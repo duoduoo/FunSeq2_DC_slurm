@@ -78,36 +78,39 @@ while(<PA>){
   	}
 }
 
+my $tmpDir = $ENV{'TMPDIR'};
+my $file_path = $tmpDir."\/".$file_path;
+print $file_path."\n".$tmpDir."\n";
 
-my $tgp_snp=$variable{'tgp_snp'} if defined $variable{'tgp_snp'};					# 1000 genomes SNP file
-my $gerp_file=$variable{'gerp_file'} if defined $variable{'gerp_file'};										# Gerp score file 
-my $sensitive=$variable{'sensitive'} if defined $variable{'sensitive'};										# Sensitive Region
-my $conserved=$variable{'conserved'} if defined $variable{'conserved'};                           			# Ultra conserved region
+my $tgp_snp=$tmpDir."\/".$variable{'tgp_snp'} if defined $variable{'tgp_snp'};					# 1000 genomes SNP file
+my $gerp_file=$tmpDir."\/".$variable{'gerp_file'} if defined $variable{'gerp_file'};										# Gerp score file 
+my $sensitive=$tmpDir."\/".$variable{'sensitive'} if defined $variable{'sensitive'};										# Sensitive Region
+my $conserved=$tmpDir."\/".$variable{'conserved'} if defined $variable{'conserved'};                           			# Ultra conserved region
 
 # Annotations (e.g.ENCODE )
-my $encode_annotation=$variable{'encode_annotation'} if defined $variable{'encode_annotation'}; 								# ENCODE  Annotation (except Motif info)
-my $bound_motif=$variable{'bound_motif'} if defined $variable{'bound_motif'};  									# ENCODE TF bound Motif 
-my $hot_file=$variable{'hot_file'} if defined $variable{'hot_file'};										# Highly occupied regions
-my $enhancer=$variable{'enhancer'} if defined $variable{'enhancer'};		 								# Enhancer-gene pairs; 
-my $motif_pfm=$variable{'motif_pfm'} if defined $variable{'motif_pfm'};  									# Motif PFM files 
-my $score_file=$variable{'score_file'} if defined $variable{'score_file'};  									# Rough motif score (corresponding to ~4e-8) produced by TFM-Pvalue 
+my $encode_annotation=$tmpDir."\/".$variable{'encode_annotation'} if defined $variable{'encode_annotation'}; 								# ENCODE  Annotation (except Motif info)
+my $bound_motif=$tmpDir."\/".$variable{'bound_motif'} if defined $variable{'bound_motif'};  									# ENCODE TF bound Motif 
+my $hot_file=$tmpDir."\/".$variable{'hot_file'} if defined $variable{'hot_file'};										# Highly occupied regions
+my $enhancer=$tmpDir."\/".$variable{'enhancer'} if defined $variable{'enhancer'};		 								# Enhancer-gene pairs; 
+my $motif_pfm=$tmpDir."\/".$variable{'motif_pfm'} if defined $variable{'motif_pfm'};  									# Motif PFM files 
+my $score_file=$tmpDir."\/".$variable{'score_file'} if defined $variable{'score_file'};  									# Rough motif score (corresponding to ~4e-8) produced by TFM-Pvalue 
 
 # Networks
-my $network_dir=$variable{'network_dir'} if defined $variable{'network_dir'};									# Network hubs
-my $reg_net=$variable{'reg_net'} if defined $variable{'reg_net'};										# Regulatory Network
-my $gencode=$variable{'gencode'} if defined $variable{'gencode'};
+my $network_dir=$tmpDir."\/".$variable{'network_dir'} if defined $variable{'network_dir'};									# Network hubs
+my $reg_net=$tmpDir."\/".$variable{'reg_net'} if defined $variable{'reg_net'};										# Regulatory Network
+my $gencode=$tmpDir."\/".$variable{'gencode'} if defined $variable{'gencode'};
 
 # Genome sequences
-my $reference_file=$variable{'reference_file'} if defined $variable{'reference_file'}; 								# Reference genome
-my $ancestral_file=$variable{'ancestral_file'} if defined $variable{'ancestral_file'};									# hg19 ancestral allele
+my $reference_file=$tmpDir."\/".$variable{'reference_file'} if defined $variable{'reference_file'}; 								# Reference genome
+my $ancestral_file=$tmpDir."\/".$variable{'ancestral_file'} if defined $variable{'ancestral_file'};									# hg19 ancestral allele
 
 # Gene info & recurrence
-my $gene_info_dir=$variable{'gene_info_dir'} if defined $variable{'gene_info_dir'};                                  # Prior knowledge of genes, such as cancer / actionable genes.
-my $cancer_dir=$variable{'cancer_dir'} if defined $variable{'cancer_dir'};										# Public Recurrent data
-my $selection=$variable{'selection'} if defined $variable{'selection'};  								    # Gene under negative selection 
+my $gene_info_dir=$tmpDir."\/".$variable{'gene_info_dir'} if defined $variable{'gene_info_dir'};                                  # Prior knowledge of genes, such as cancer / actionable genes.
+my $cancer_dir=$tmpDir."\/".$variable{'cancer_dir'} if defined $variable{'cancer_dir'};										# Public Recurrent data
+my $selection=$tmpDir."\/".$variable{'selection'} if defined $variable{'selection'};  								    # Gene under negative selection 
 
 # weighted scoring scheme
-my $weight_file=$variable{'weight_file'} if defined $variable{'weight_file'};                                    # weighted scoring scheme
+my $weight_file=$tmpDir."\/".$variable{'weight_file'} if defined $variable{'weight_file'};                                    # weighted scoring scheme
 
 # GENCODE
 my $gencode_v = (split /\./,(split /\//,`ls $gencode/*.promoter.bed`)[-1])[1]; 
