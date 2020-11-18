@@ -1,6 +1,6 @@
 ## Notes
 ### 2020_08_12
-- Edited the config.txt and funseq2.pl for slurm dynamic $TMPDIR folder
+- Edited the config.txt, funseq2.sh and funseq2.pl for slurm dynamic $TMPDIR folder
 ---
 
 # FunSeq2 Pre-built data context
