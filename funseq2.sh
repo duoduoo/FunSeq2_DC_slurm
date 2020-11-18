@@ -15,7 +15,7 @@ parallel=5
 out_path=out
 cancer_type=all
 score_cut=1.5
-user_anno=/home/fuyao/FunSeq_PCAWG/data_context/user_annotations
+user_anno=$TMPDIR/data_context/user_annotations
 recurdb_use=0
 sv_length_cut=20
 
@@ -150,10 +150,10 @@ then
 	then
 		if [[ $expression != "" && $class != "" && $exp_format != "" && $gene_list != "" ]]
 		then
-			perl code/funseq2.pl $user_input $maf $genome_mode $input_format $output_format $nc_mode $out_path $parallel $cancer_type $score_cut $weight_mode $user_anno $recurdb_use $sv_length_cut $gene_list $expression $class $exp_format	
+			perl $TMPDIR/code/funseq2.pl $user_input $maf $genome_mode $input_format $output_format $nc_mode $out_path $parallel $cancer_type $score_cut $weight_mode $user_anno $recurdb_use $sv_length_cut $gene_list $expression $class $exp_format	
 		elif [[ $expression != "" && $class != "" && $exp_format != "" && $gene_list == "" ]]
 		then
-			perl code/funseq2.pl $user_input $maf $genome_mode $input_format $output_format $nc_mode $out_path $parallel $cancer_type $score_cut $weight_mode $user_anno $recurdb_use $sv_length_cut $expression $class $exp_format
+			perl $TMPDIR/code/funseq2.pl $user_input $maf $genome_mode $input_format $output_format $nc_mode $out_path $parallel $cancer_type $score_cut $weight_mode $user_anno $recurdb_use $sv_length_cut $expression $class $exp_format
 		else	
 			echo "Please input both expression , class label and expression format data"
 	
@@ -161,9 +161,9 @@ then
 	else
 		if [[ $gene_list != "" ]]
 	 	then
-			perl code/funseq2.pl $user_input $maf $genome_mode $input_format $output_format $nc_mode $out_path $parallel $cancer_type $score_cut $weight_mode $user_anno $recurdb_use $sv_length_cut $gene_list
+			perl $TMPDIR/code/funseq2.pl $user_input $maf $genome_mode $input_format $output_format $nc_mode $out_path $parallel $cancer_type $score_cut $weight_mode $user_anno $recurdb_use $sv_length_cut $gene_list
 		else
-			perl code/funseq2.pl $user_input $maf $genome_mode $input_format $output_format $nc_mode $out_path $parallel $cancer_type $score_cut $weight_mode $user_anno $recurdb_use $sv_length_cut
+			perl $TMPDIR/code/funseq2.pl $user_input $maf $genome_mode $input_format $output_format $nc_mode $out_path $parallel $cancer_type $score_cut $weight_mode $user_anno $recurdb_use $sv_length_cut
 		fi
 	fi
 else
